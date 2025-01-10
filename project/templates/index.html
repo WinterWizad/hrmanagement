@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+ 
+
+{% block content %}
+  <!-- Chart Section -->
+  <div id="charts" class="container mt-5">
+    <h2 class="text-center">Employee Analytics</h2>
+    <div class="row mt-4">
+      <div class="col-md-4">
+        <div class="card text-center bg-primary text-white">
+          <div class="card-body">
+            <h5>Total Employees</h5>
+            <h3>{{ total_employees }}</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card text-center bg-success text-white">
+          <div class="card-body">
+            <h5>Total Salaries</h5>
+            <h3>Rs.{{ total_salaries }}</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card text-center bg-warning text-white">
+          <div class="card-body">
+            <h5>Average Salary</h5>
+            <h3>Rs.{{ average_salary|floatformat:2 }}</h3>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div id="actions" class="container mt-5">
+    <h2 class="text-center mb-4">Manage Employees</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+      <div class="col">
+        <div class="card text-center border-primary">
+          <div class="card-body">
+            <h5 class="card-title">View All Employees</h5>
+            <p class="card-text">See a complete list of all employees in your office.</p>
+            <a href="/all-emp" class="btn btn-primary">View Employees</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card text-center border-success">
+          <div class="card-body">
+            <h5 class="card-title">Add an Employee</h5>
+            <p class="card-text">Add new employees to the system effortlessly.</p>
+            <a href="/add-emp" class="btn btn-success">Add Employee</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card text-center border-danger">
+          <div class="card-body">
+            <h5 class="card-title">Remove an Employee</h5>
+            <p class="card-text">Remove employees from the system if needed.</p>
+            <a href="/remove_emp" class="btn btn-danger">Remove Employee</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card text-center border-warning">
+          <div class="card-body">
+            <h5 class="card-title">Filter Employees</h5>
+            <p class="card-text">Find employees based on specific criteria.</p>
+            <a href="/filter-emp" class="btn btn-warning">Filter Employees</a>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>  
+
+ {% endblock %}

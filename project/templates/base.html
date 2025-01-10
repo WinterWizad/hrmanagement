@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HR Management Software</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">HR Dashboard</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#charts">Analytics</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#actions">Actions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="bg-light py-5 text-center">
+    <div class="container">
+      <h1 class="display-4">Welcome to the HR Management Software</h1>
+      <p class="lead">Direct your precious Employess with ease.</p>
+    </div>
+  </div>
+
+  <!-- Chart Section -->
+  {% block content %}
+
+
+  {% endblock %}
+  <!-- Action Cards -->
+  
+  <!-- Footer -->
+  <footer class="bg-primary text-white text-center py-3 mt-5">
+    <div class="container">
+      <p>&copy; 2025 HR Management Software.</p>
+      <p>PJ Techs</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle (includes Popper.js) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Chart.js Script -->
+  <script>
+    const employeesByDepartment = JSON.parse('{{ employees_by_department|safe }}'.replace(/&quot;/g, '"'));
+
+    const deptLabels = Object.keys(employeesByDepartment);
+    const deptData = Object.values(employeesByDepartment);
+
+    const ctx = document.getElementById('deptChart').getContext('2d');
+    const deptChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: deptLabels,
+        datasets: [{
+          label: 'Employees',
+          data: deptData,
+          backgroundColor: 'rgba(54, 162, 235, 0.7)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1,
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+          }
+        },
+      }
+    });
+  </script>
+</body>
+</html>

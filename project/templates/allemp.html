@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+ 
+
+{% block content %}
+<body>
+    
+  <nav>
+    <div class="container mt-5">
+      <h1>HR Management Software</h1>
+     <hr>
+     <table class="table" border="1">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">First NAME</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">salary</th>
+            <th scope="col">bonus</th>
+            <th scope="col">phone number</th>
+            <th scope="col">Role</th>
+            <th scope="col">Department</th>
+            <th scope="col">location</th>
+            <th scope="col">Hire Date</th>
+          </tr>
+        </thead>
+        {% for emp in emps %}
+        <tbody>
+          <tr>
+            <th scope="row">{{emp.id}}</th>
+            <td>{{emp.first_name}}</td>
+            <td>{{emp.last_name}}</td>
+            <td>{{emp.salary}}</td>
+            <td>{{emp.bonus}}</td>
+            <td>{{emp.phone}}</td>
+            <td>{{emp.role.name}}</td>
+            <td>{{emp.dept.name}}</td>
+            <td>{{emp.dept.location}}</td>
+            <td>{{emp.hire_date}}</td>
+          </tr>
+         
+        </tbody>
+        {% endfor %}
+      </table>
+    </div>
+  </nav>
+    </body>
+    {% endblock %}
